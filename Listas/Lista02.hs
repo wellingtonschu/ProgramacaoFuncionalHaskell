@@ -1,68 +1,66 @@
 --Ex1
 metade :: Float -> Float
-metade x = if x > 10 then x
-    else x / 2
+metade x =  if x > 10
+                then x
+            else x / 2
 
 --Ex2
 parImpar :: Int -> String
-parImpar x = if mod x 2 == 0 then "Par"
- else "impar"
+parImpar x =    if mod x 2 == 0
+                    then "Par"
+                else "impar"
 
 --Ex3
-nota :: Float -> String
-nota a 
-    | a >= 9.0 = "conceito A"     
-    | a >= 7.5 = "conceito B" 
-    | a >= 6.0 = "conceito C"   
-    | a >= 4.0 = "conceito D"
-    | otherwise = "conceito E"
-
+notaConceito :: Float -> String
+notaConceito x 
+    | x >= 9.0 = "Conceito A"     
+    | x >= 7.5 = "Conceito B" 
+    | x >= 6.0 = "Conceito C"   
+    | x >= 4.0 = "Conceito D"
+    | otherwise = "Conceito E"
 
 --Ex4
-maiorValorMedio :: Float -> Float -> Float -> Float
-maiorValorMedio a b c = (a + b + c) / 3
-    if a > maiorValorMedio
-    then a
-    else if b > maiorValorMedio
-    then b
-    else if c > maiorValorMedio
-    then c
-    else if (a > maiorValorMedio) && (b > maiorValorMedio)
-    then a, b
-    else if (a > maiorValorMedio) && (c > maiorValorMedio)
-    then a, c
-    else b, c
-{-}    | a > maiorValorMedio = a 
-    | b > maiorValorMedio = b 
-    | c > maiorValorMedio = c 
-    | (a > maiorValorMedio) && (b > maiorValorMedio) = a,b 
-    | (a > maiorValorMedio) && (c > maiorValorMedio) = a,c		
-    | otherwise = b,c
-{-
---Ex5
-entre100e200 :: Int -> String
-entre100e200 x = (x >= 100) && (x <= 200) 
-			| mod x 2 == 0 = "par" 
-			| mod x 3 == 0 = "Impar"
-			| otherwise = "Não está entre 100 e 200"
+maiorQueMedia :: Float -> Float -> Float -> String
+maiorQueMedia x y z =  if x > ((x + y + z) / 3) && y > ((x + y + z) / 3)
+                        then "Possui 2 números maiores que a média" 
+                    else if x > ((x + y + z) / 3) && z > ((x + y + z) / 3)
+                        then "Possui 2 números maiores que a média"
+                    else if y > ((x + y + z) / 3) && z > ((x + y + z) / 3)
+                        then "Possui 2 números maiores que a média"
+                    else if x > ((x + y + z) / 3) || y > ((x + y + z) / 3) || z > ((x + y + z) / 3)
+                        then "Possui 1 número maior que a média"
+                    else "Nenhum número maior que a média"
 
---Ex6
-pesoIdeal :: float -> Char -> Float
-pesoIdeal h s 			| s == f = ((62.1 * h)–44.7)
-			| s == m = ((72.7 * h)–58 )-}
-			
---Ex7
-idade :: Int -> String
-idade a 
-    | a > 18 = "Senior"     
-    | a >= 14 = "Juvenil B" 
-    | a >= 11 = "Juvenil A"   
-    | a >= 8 = "Infantil B"
-    | a >= 5 = "Infantil A"		
+--Ex05
+parImparCemDuze :: Int -> String
+parImparCemDuze x = if x < 100 || x > 200 
+                        then "Número não está entre 100 e 200"
+                    else if mod x 2 == 0
+                        then "O número é par" 
+                    else "O número é impar"
 
-{-			
---exer8
-numeroDiv :: Int-> String
-numeroDiv n
-		|(n mod 10==0) && (n mod 5==0) && (n mod 2==0) = "Numero divisivel por 10, 5, 2!"
-		|otherwise = "não é divisível por 10,5,2!"-}
+--Ex06
+iMCHomemMulher :: Float -> Char -> String
+iMCHomemMulher h s =    if s == 'm'
+                            then "Peso ideal: "++ show ((72.7 * h) - 58)
+                        else if s == 'f'
+                            then "Peso ideal: " ++ show ((62.1 * h) - 44.7)
+                        else "Sexo inválido"
+
+--Ex07
+catNatacao :: Int -> String
+catNatacao id
+    | id >= 5 && id <= 7 = "Categoria Infantil A"
+    | id >= 8 && id <= 10 = "Categoria Infantil B"
+    | id >= 11 && id <= 13 = "Categoria Infantil A"
+    | id >= 14 && id <= 17 = "Categoria Juvenil A"
+    | id >= 18 = "Categoria Senior"
+    | otherwise = "Muito novo para competir"
+
+--Ex08
+divisivel :: Int -> String
+divisivel x
+    | mod x 10 == 0 = "O número é divisivel por 10, 5 e 2."
+    | mod x 5 == 0 = "O número é divisivel somente por 5."
+    | mod x 2 == 0 = "O número é divisivel somente por 2."
+    | otherwise = "Nao é divisivel por 2, 5 e 10."
