@@ -1,3 +1,5 @@
+import Data.Char
+
 --Ex01
 tripla = (1, 'y', "Terceiro")
 select_primeiro (p,_,_) = p
@@ -17,3 +19,8 @@ triangulo (a, b, c) = if (a > b + c) || (b > a + c) || (c > a + b)
         else if (a == b && a /= c && ba /= c) || (a == c && a /= b && c /= b)
             then ("Isosceles", a + b + c)
             else ("teste", 0)
+
+--Ex04
+converte x = if isLower x
+    then (x, toUpper x, ord x)
+    else (x, toLower x, ord x)
