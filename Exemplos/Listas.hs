@@ -9,3 +9,6 @@ Booleanos = [True,False,True]
 
 Tuplas::[(Int, Char)]
 Tuplas = [(1,'a'),(2,'b'),(3,'c')]
+
+Palavras::[[Char]]
+Palavras = ["ana", ['a','n','a']]
